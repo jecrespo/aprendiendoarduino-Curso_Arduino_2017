@@ -9,7 +9,7 @@ void setup() {
   Serial.begin(9600);
   Serial.println("Introduce una cadena de texto: ");
   while (Serial.available() == 0) {
-    //Ho hago nada
+    //No hago nada
   }
 
   do {
