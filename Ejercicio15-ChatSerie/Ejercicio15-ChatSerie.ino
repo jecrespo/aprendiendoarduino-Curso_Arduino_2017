@@ -1,5 +1,5 @@
-/* Ejercicio22-ChatSerie para el curso #aprendiendoarduino
-  No todos los pines soportam interrupciones de cambio
+/* Ejercicio ChatSerie para el curso #aprendiendoarduino
+  No todos los pines soportan interrupciones de cambio
   The circuit:
    RX is digital pin 10 (connect to TX of other device)
    TX is digital pin 11 (connect to RX of other device)
