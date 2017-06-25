@@ -10,6 +10,7 @@ int pos = 0;    // variable to store the servo position
 void setup() {
   Serial.begin(9600);
   myservo.attach(9);  // attaches the servo on pin 9 to the servo object
+  Serial.println("Escribe la posición donde mover el servo (0 - 180)");
 }
 
 void loop() {
@@ -22,9 +23,10 @@ void loop() {
       delay(5);
     }
     while (Serial.available() > 0);
-    Serial.println(grados);
+    Serial.println("Movido a la posición: " + (String)grados);
     posicion = grados.toInt();
     myservo.write(posicion);
+    Serial.println("Escribe la posición donde mover el servo (0 - 180)");
   }
 }
 
