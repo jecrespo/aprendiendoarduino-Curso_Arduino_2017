@@ -8,6 +8,8 @@
 #define VERSION "v1.1"
 #define DEBUG 1
 
+const int pin_led = 8;
+
 //----------------------- VARIABLES RED ------------------------//
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xYY}; //Sustituir YY por el numero de MAC correcto
 EthernetServer server = EthernetServer(80);
@@ -38,8 +40,8 @@ void setup()
   Serial.println(Ethernet.localIP());
 
   server.begin();
-  pinMode(LED_BUILTIN, OUTPUT);  //Built-in Led
-  digitalWrite(LED_BUILTIN, led);
+  pinMode(pin_led, OUTPUT);
+  digitalWrite(pin_led, led);
   pinMode(A0, INPUT);
   pinMode(A1, INPUT);
   pinMode(A2, INPUT);
@@ -56,13 +58,13 @@ void loop()
   if (((lectura_A1) > umbral) && !led && !manual) //Solo regulo si no está en manual
   {
     led = 1;
-    digitalWrite(LED_BUILTIN, led);
+    digitalWrite(pin_led, led);
     Serial.println("Enciendo Led");
   }
   if (((lectura_A1) < (umbral + 10)) && led && !manual) //hiteresis = 10
   {
     led = 0;
-    digitalWrite(LED_BUILTIN, led);
+    digitalWrite(pin_led, led);
     Serial.println("Apago Led");
   }
 
@@ -189,7 +191,7 @@ void cambioManual(EthernetClient client_ajax, String valor) {
   if (valor == "ON") {
     manual = 1;
     led = 1;
-    digitalWrite(LED_BUILTIN, led);
+    digitalWrite(pin_led, led);
     Serial.println("Enciendo Led Manualmente");
   }
   else if (valor == "OFF") {

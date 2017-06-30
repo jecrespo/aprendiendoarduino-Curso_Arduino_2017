@@ -14,6 +14,8 @@
 #include <SPI.h>
 #include <Ethernet.h>
 
+const int pin_led = 8;
+
 //Configuración Ethernet
 byte mac[] = {
   0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xYY  //Sustituir YY por el numero de MAC correcto
@@ -39,8 +41,8 @@ void setup()
     Serial.println(Ethernet.localIP());
   }
 
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, LOW);
+  pinMode(pin_led, OUTPUT);
+  digitalWrite(pin_led, LOW);
   led_state = LOW;
 
   //Comienzo a escuchar cliente ethernet
@@ -68,7 +70,7 @@ void loop()
     else if (recibido.startsWith("POST / HTTP/1.1")) {
       Serial.println("------> Cambio estado LED");
       led_state = !led_state;
-      digitalWrite(LED_BUILTIN, led_state);  //cambio el estado del led
+      digitalWrite(pin_led, led_state);  //cambio el estado del led
       muestraWeb(client);
     }
     else {
