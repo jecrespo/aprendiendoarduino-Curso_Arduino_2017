@@ -14,10 +14,12 @@ void setup() {
   if (analogValue > threshold_base) {
     alarma = 1;
     threshold = threshold_base - histeresis;
+    digitalWrite(ledPin, HIGH);
   }
   else {
     alarma = 0;
     threshold = threshold_base + histeresis;
+    digitalWrite(ledPin, LOW);
   }
 }
 
