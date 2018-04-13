@@ -1,8 +1,6 @@
 /*
   Interactivo
 */
-#define DEBUG 0
-
 String leido = "";
 
 void setup() {
